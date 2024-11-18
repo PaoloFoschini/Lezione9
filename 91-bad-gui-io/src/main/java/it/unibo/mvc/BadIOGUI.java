@@ -6,15 +6,21 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -45,11 +51,15 @@ public class BadIOGUI {
         final JPanel canvas = new JPanel();
         canvas.setLayout(new BorderLayout());
         final JButton write = new JButton("Write on file");
-       write.addActionListener(new ActionListener() {
+        write.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(final ActionEvent e) {
-                //result.setText("" + randomGenerator.nextInt());
-                System.out.println(randomGenerator.nextInt());
+            public void actionPerformed(final ActionEvent event) {
+                try(PrintStream ps = new PrintStream(PATH, StandardCharsets.UTF_8)){
+                    ps.print(randomGenerator.nextInt());
+                }catch(IOException e){
+                    JOptionPane.showMessageDialog(frame, e, "Error", JOptionPane.ERROR_MESSAGE);
+                    e.printStackTrace();
+                }
             }
         });
         canvas.add(write, BorderLayout.CENTER);
@@ -61,13 +71,23 @@ public class BadIOGUI {
 
         final JButton read = new JButton("Read the file");
         read.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Premuto");
+            public void actionPerformed(ActionEvent event) {
+                try{
+                    int c;
+                    String stringa = "";
+                    final FileInputStream input = new FileInputStream(PATH);
+                    while((c = input.read()) != -1){
+                        stringa = stringa + (char) c;
+                    }
+                    System.out.println(stringa);
+                    input.close();
+                }catch(Exception e){
+                    System.out.println("Il nome del file specificato non è stato trovato!");
+                }
             }
         });
         box.add(read);
 
-        
         box.add(write);
         canvas.add(box);
 

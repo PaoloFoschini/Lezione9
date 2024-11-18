@@ -5,6 +5,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -44,6 +46,12 @@ public class BadIOGUI {
         final JButton write = new JButton("Write on file");
         canvas.add(write, BorderLayout.CENTER);
         frame.setContentPane(canvas);
+         
+        final JPanel box = new JPanel();
+        box.setLayout(new BoxLayout(box, BoxLayout.X_AXIS));
+        box.add(write);
+        canvas.add(box);
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         /*
          * Handlers
@@ -80,7 +88,7 @@ public class BadIOGUI {
         final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         final int sw = (int) screen.getWidth();
         final int sh = (int) screen.getHeight();
-        frame.setSize(sw / PROPORTION, sh / PROPORTION);
+        //frame.setSize(sw / PROPORTION, sh / PROPORTION);
         /*
          * Instead of appearing at (0,0), upper left corner of the screen, this
          * flag makes the OS window manager take care of the default positioning
@@ -90,6 +98,7 @@ public class BadIOGUI {
         /*
          * OK, ready to push the frame onscreen
          */
+        frame.setMinimumSize(new Dimension(sw / PROPORTION, sh / PROPORTION));
         frame.setVisible(true);
     }
 

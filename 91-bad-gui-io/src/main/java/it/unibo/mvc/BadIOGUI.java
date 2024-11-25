@@ -44,9 +44,9 @@ public class BadIOGUI {
         write.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent event) {
-                try(PrintStream ps = new PrintStream(PATH, StandardCharsets.UTF_8)){
+                try (PrintStream ps = new PrintStream(PATH, StandardCharsets.UTF_8)) {
                     ps.print(randomGenerator.nextInt());
-                }catch(IOException e){
+                } catch(IOException e) {
                     JOptionPane.showMessageDialog(frame, e, "Error", JOptionPane.ERROR_MESSAGE);
                     e.printStackTrace();
                 }
@@ -54,33 +54,28 @@ public class BadIOGUI {
         });
         canvas.add(write, BorderLayout.CENTER);
         frame.setContentPane(canvas);
-         
         final JPanel box = new JPanel();
         box.setLayout(new BoxLayout(box, BoxLayout.X_AXIS));
-        
-
         final JButton read = new JButton("Read the file");
         read.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                try{
+                try {
                     int c;
                     String stringa = "";
                     final FileInputStream input = new FileInputStream(PATH);
-                    while((c = input.read()) != -1){
+                    while ((c = input.read()) != -1) {
                         stringa = stringa + (char) c;
                     }
                     System.out.println(stringa);
                     input.close();
-                }catch(Exception e){
+                } catch(Exception e) {
                     System.out.println("Il nome del file specificato non è stato trovato!");
                 }
             }
         });
         box.add(read);
-
         box.add(write);
         canvas.add(box);
-
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         /*
          * Handlers

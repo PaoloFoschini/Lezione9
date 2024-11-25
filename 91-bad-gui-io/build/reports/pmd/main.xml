@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 https://pmd.github.io/schema/report_2_0_0.xsd" version="7.7.0" timestamp="2024-11-22T10:15:15.554">
+<file name="C:\Users\paolo\OneDrive - Alma Mater Studiorum Università di Bologna\anno2\OOP\Esercizi\Lezione9\91-bad-gui-io\src\main\java\it\unibo\mvc\BadIOGUI.java">
+<violation beginline="51" endline="51" begincolumn="21" endcolumn="40" rule="AvoidPrintStackTrace" ruleset="Best Practices" package="it.unibo.mvc" method="actionPerformed" externalInfoUrl="https://docs.pmd-code.org/pmd-doc-7.7.0/pmd_rules_java_bestpractices.html#avoidprintstacktrace" priority="3">
+Avoid printStackTrace(); use a logger call instead.
+</violation>
+<violation beginline="61" endline="61" begincolumn="25" endcolumn="40" rule="MissingOverride" ruleset="Best Practices" package="it.unibo.mvc" method="actionPerformed" externalInfoUrl="https://docs.pmd-code.org/pmd-doc-7.7.0/pmd_rules_java_bestpractices.html#missingoverride" priority="3">
+The method 'actionPerformed(ActionEvent)' is missing an @Override annotation.
+</violation>
+<violation beginline="66" endline="66" begincolumn="28" endcolumn="46" rule="AssignmentInOperand" ruleset="Error Prone" package="it.unibo.mvc" method="actionPerformed" externalInfoUrl="https://docs.pmd-code.org/pmd-doc-7.7.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="67" endline="67" begincolumn="25" endcolumn="32" rule="UseStringBufferForStringAppends" ruleset="Performance" package="it.unibo.mvc" method="actionPerformed" externalInfoUrl="https://docs.pmd-code.org/pmd-doc-7.7.0/pmd_rules_java_performance.html#usestringbufferforstringappends" priority="3">
+Prefer StringBuilder (non-synchronized) or StringBuffer (synchronized) over += for concatenating strings
+</violation>
+<violation beginline="69" endline="69" begincolumn="21" endcolumn="27" rule="SystemPrintln" ruleset="Best Practices" package="it.unibo.mvc" method="actionPerformed" externalInfoUrl="https://docs.pmd-code.org/pmd-doc-7.7.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
+Usage of System.out/err
+</violation>
+<violation beginline="71" endline="71" begincolumn="25" endcolumn="34" rule="AvoidCatchingGenericException" ruleset="Design" package="it.unibo.mvc" method="actionPerformed" externalInfoUrl="https://docs.pmd-code.org/pmd-doc-7.7.0/pmd_rules_java_design.html#avoidcatchinggenericexception" priority="3">
+Avoid catching generic exceptions such as NullPointerException, RuntimeException, Exception in try-catch block
+</violation>
+<violation beginline="72" endline="72" begincolumn="21" endcolumn="27" rule="SystemPrintln" ruleset="Best Practices" package="it.unibo.mvc" method="actionPerformed" externalInfoUrl="https://docs.pmd-code.org/pmd-doc-7.7.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
+Usage of System.out/err
+</violation>
+</file>
+</pmd>

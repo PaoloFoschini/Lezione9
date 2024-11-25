@@ -46,7 +46,7 @@ public class BadIOGUI {
             public void actionPerformed(final ActionEvent event) {
                 try (PrintStream ps = new PrintStream(PATH, StandardCharsets.UTF_8)) {
                     ps.print(randomGenerator.nextInt());
-                } catch(IOException e) {
+                } catch (IOException e) {
                     JOptionPane.showMessageDialog(frame, e, "Error", JOptionPane.ERROR_MESSAGE);
                     e.printStackTrace();
                 }
@@ -58,7 +58,8 @@ public class BadIOGUI {
         box.setLayout(new BoxLayout(box, BoxLayout.X_AXIS));
         final JButton read = new JButton("Read the file");
         read.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
+            @Override
+            public void actionPerformed(final ActionEvent event) {
                 try {
                     int c;
                     String stringa = "";
@@ -68,7 +69,7 @@ public class BadIOGUI {
                     }
                     System.out.println(stringa);
                     input.close();
-                } catch(Exception e) {
+                } catch (Exception e) {
                     System.out.println("Il nome del file specificato non è stato trovato!");
                 }
             }

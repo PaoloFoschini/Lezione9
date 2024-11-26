@@ -2,14 +2,9 @@ package it.unibo.mvc;
 
 import java.io.DataOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Random;
-
-import javax.swing.JFrame;
 
 /* 
  * The class `Controller` class must implement a simple controller responsible of I/O access. 
@@ -33,26 +28,24 @@ import javax.swing.JFrame;
  * Application controller. Performs the I/O.
  */
 public class Controller {
-    private String filename = "output.txt";
     private final String propertyPath = System.getProperty("user.home") + System.getProperty("file.separator");
-    private String path = propertyPath + filename;
+    private File currentFile = new File(propertyPath + "output.txt");
 
-    public void setCurrentFile(String filename){
-        this.filename = filename; 
+    public void setCurrentFile(File file){
+        this.currentFile = file; 
     }
 
-    public String getCurrentFile(){
-        return this.filename;
+    public File getCurrentFile(){
+        return this.currentFile;
     }
 
     public String getPath(){
-        return this.path;
+        return this.currentFile.getPath();
     }
 
     public void write(String content) throws IOException{
         try(
-            final OutputStream file = new FileOutputStream (this.path);
-            final DataOutputStream output = new DataOutputStream(file)
+            final DataOutputStream output = new DataOutputStream(new FileOutputStream (this.currentFile.getAbsoluteFile()))
         ){
             output.writeUTF(content);
         }

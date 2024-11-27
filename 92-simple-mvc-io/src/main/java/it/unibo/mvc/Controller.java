@@ -4,7 +4,6 @@ import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 
 /* 
  * The class `Controller` class must implement a simple controller responsible of I/O access. 

@@ -11,7 +11,6 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 /**
  * implement `SimpleGUI` class in such a way that:
@@ -27,7 +26,6 @@ import java.io.IOException;
 public final class SimpleGUI {
     private final JFrame frame = new JFrame();
     private static final int PROPORTION = 5;
-    private String history;
 
     public SimpleGUI(){
         final JPanel panel = new JPanel();
@@ -55,9 +53,7 @@ public final class SimpleGUI {
         showHistory.addActionListener(new ActionListener() {
             public void actionPerformed(final ActionEvent event){
                 try{
-                    for(int i = 0; i < sc.getPreviousStrings().size() ; i++){
-                        textArea.append(sc.getPreviousStrings().get(i) + "\n");
-                    }
+                      textArea.setText(sc.getPreviousStrings() + "\n"); 
                 }catch(IllegalStateException e){
                     System.out.println("???");
                 }
